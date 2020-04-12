@@ -1,6 +1,8 @@
 import tushare as ts
 import pandas as pd
 import numpy as np
+import time
+import datetime
 #ts.set_token('')
 '''
 获取某个股票的在date中过的成交手为vol以上的大单信息
@@ -27,22 +29,30 @@ def saveFile(Path,data):
                  line_terminator='\n', chunksize=None, tupleize_cols=None, date_format=None, doublequote=True,
                  escapechar=None, decimal='.')
 
-
+'''
+读取csv文件
+'''
 def readFile(Path):
     df = pd.read_csv(filepath_or_buffer=Path,sep=',')
     return df
 
-
+'''
+对Pandasform 文件提取两列 
+volume 和 type
+'''
 def getVolumeType(data):
     return data[['volume','type']]
 
 
+'''
+对输入数据中的
+买盘、卖盘、中性盘进行统计
+返回字典
+'''
 def getThreeType(data):
     result = {'buy':0,'mid':0,'sale':0}
     # print(type(data))
     for index ,row in data.iterrows():
-        # print(row)
-        # print(type(row))
         if row['type'] == "买盘":
             result['buy']+=int(row['volume'])
         elif row['type'] == "卖盘":
@@ -51,9 +61,45 @@ def getThreeType(data):
             result['mid']+=int(row['volume'])
     return result
 
-def Test():
-    #data = ts.get_concept_classified()
-    data = ts.get_latest_news()
-    print(data)
+'''
+输入天数Days
+返回当天开始的Days天的日期 
+数据格式为"2020-04-11"
+'''
+def getDateList(Days):
+    if Days < 0:
+        return "error input"
+    limit = Days
+    i = 0
+    dateList = []
+    while (i<limit):
+        date = datetime.date.today() - datetime.timedelta(days = i)
+        if date.weekday() == 6 or date.weekday() == 5:
+            i+=1
+            limit+=1
+            continue
+        dateList.append(date)
+        i+=1
+    return dateList
 
-#print(getMainDeal('000333','2020-03-20',500,1))
+
+'''
+根据查找前N天的数据
+并且保存
+'''
+def getNdayResult(code,N,vol,pause):
+    if N < 0:
+        return "error input"
+    dateList = getDateList(N)
+    for date in dateList:
+        filePath = "./" + str(code)+"_"
+        filePath += str(date) + ".csv"
+        result = getMainDeal(code,date,vol=500,pause=1)
+        if result is None:
+            continue
+        saveFile(filePath,result)
+        time.sleep(10)
+
+
+
+
