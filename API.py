@@ -117,6 +117,7 @@ def getCodeOverX(x):
     data['code'] = data['code'].str.rjust(6,fillchar="0")
     data = data[data['changepercent']>x]
     saveFile("./data/top.csv",data)
+    print(data['code'].shape[0])
     # print(data['code'])
 
 
@@ -126,8 +127,13 @@ def getCodeOverX(x):
 逻辑为 连续多波中单
 '''
 def SearchAgenc():
-    getMainDeal()
+    data = readFile('./data/top.csv')
+    code_list = []
+    for index in data['code']:
+        code_list.append(index)
+    print(code_list)
+    # getMainDeal()
 
 #getToday()
-getCodeOverX(9)
-
+# getCodeOverX(9.5)
+SearchAgenc()
