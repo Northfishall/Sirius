@@ -24,10 +24,9 @@ index : 是否保存索引，默认为 True ，保存
 index_label : 索引的列标签名
 '''
 def saveFile(Path,data):
-    data.to_csv(path_or_buf=Path, sep = ',',na_rep = '',float_format=None, columns=None, header=True, index=None,
+    data.to_csv(path_or_buf=Path, sep = ',',na_rep = 'NA',float_format=None, columns=None, header=True, index=None,
                  index_label=None, mode='w', encoding=None, compression=None, quoting=None, quotechar='"',
-                 line_terminator='\n', chunksize=None, tupleize_cols=None, date_format=None, doublequote=True,
-                 escapechar=None, decimal='.')
+                 line_terminator='\n',  decimal='.')
 
 '''
 读取csv文件
@@ -94,12 +93,41 @@ def getNdayResult(code,N,vol,pause):
     for date in dateList:
         filePath = "./" + str(code)+"_"
         filePath += str(date) + ".csv"
-        result = getMainDeal(code,date,vol=500,pause=1)
+        result = getMainDeal(code,date,vol,pause)
         if result is None:
             continue
         saveFile(filePath,result)
         time.sleep(10)
 
+'''
+获取今天的数据
+'''
+def getToday():
+    filePath = "./data/today.csv"
+    saveFile(filePath,ts.get_today_all())
 
 
+'''
+提取当日涨幅在x以上的code
+'''
+def getCodeOverX(x):
+    data = readFile("./data/today.csv")
+    data['code'] = data['code'].astype('str')
+    # print(type(data['code']))
+    data['code'] = data['code'].str.rjust(6,fillchar="0")
+    data = data[data['changepercent']>x]
+    saveFile("./data/top.csv",data)
+    # print(data['code'])
+
+
+
+'''
+查找机构盘
+逻辑为 连续多波中单
+'''
+def SearchAgenc():
+    getMainDeal()
+
+#getToday()
+getCodeOverX(9)
 
