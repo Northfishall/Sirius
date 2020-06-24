@@ -1,6 +1,7 @@
 import tushare as ts
 import pandas as pd
 import numpy as np
+import os
 import time
 import datetime
 #ts.set_token('')
@@ -129,11 +130,61 @@ def getCodeOverX(x):
 def SearchAgenc():
     data = readFile('./data/top.csv')
     code_list = []
-    for index in data['code']:
-        code_list.append(index)
-    print(code_list)
-    # getMainDeal()
+    for code in data['code']:
+        code = str(code).rjust(6,"0")
+        code_list.append(code)
+    date = getDateList(2)[1]
+    for code in code_list:
+        print("code is :"+str(code))
+        result = getMainDeal(str(code),date,90,1)
+        if result is None:
+            continue
+        path = "./data/MainDeal"+str(code)+".csv"
+        print("result is :",result)
+        print("Type:",type(result))
+        saveFile(path,result)
+        result_sell = result[result['type']=="卖盘"]
+        result_buy = result[result['type']=="买盘"]
+        result_med = result[result['type']=="中性盘"]
+        # for row in result_sell:
+
+def Search_local():
+    for root, dirs, files in os.walk(r'./data/MainDeal/'):
+        for file in files:
+            path = os.path.join(root,file)
+            data = readFile(path)
+            # print(data)
+            data['time'] = pd.to_datetime(data['time'])
+            print(data['time'][0])
+            print((data['time'][0]-data['time'][1]).seconds)
+            result = pd.DataFrame(columns=['code','name','time','price','volume','preprice','type'])
+            data_temp = data.copy()
+            #axis = 1 表示按行 axis = 0 表示按列
+            data_temp['next_time'] = data_temp.groupby('code')['time'].apply(lambda i:i.shift(1))
+            data_temp['diff'] = data_temp.apply(lambda x:(x['next_time'] - x['time']).seconds , axis = 1)
+            print(data_temp)
+            # data_temp['diff'] = pd.to_datetime(data_temp['diff'])
+            # data_temp['diff'] = data_temp['diff'].seconds
+
+            # print(data_temp)
+
+            # for index in range(data.shape[0]-1):
+            #     diff_time = (data['time'][index]-data['time'][index+1]).seconds
+            #     if diff_time<70:
+            #         if data[index]['volume']>10000 and data[index]['volume']<30000 and \
+            #                 data[index+1]['volume']>10000 and data[index+1]['volume']<30000:
+            #             flag = 1
+
+
+            return
+
+
+
+
+
+
 
 #getToday()
 # getCodeOverX(9.5)
-SearchAgenc()
+# SearchAgenc()
+Search_local()

@@ -28,6 +28,11 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\python\Sirius\Sirius\data\MainDeal" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="API" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Sirius" />
@@ -79,7 +84,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1592450999893</updated>
-      <workItem from="1592451002545" duration="8671000" />
+      <workItem from="1592451002545" duration="19138000" />
+      <workItem from="1592723938387" duration="10518000" />
     </task>
     <servers />
   </component>
@@ -91,28 +97,32 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1592467100338" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1592472703151">
+    <state width="1877" height="363" key="GridCell.Tab.0.bottom" timestamp="1592731260631">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1592472703151" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1592472703151">
+    <state width="1877" height="363" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1592731260631" />
+    <state width="1877" height="363" key="GridCell.Tab.0.center" timestamp="1592731260631">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1592472703151" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1592472703150">
+    <state width="1877" height="363" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1592731260631" />
+    <state width="1877" height="363" key="GridCell.Tab.0.left" timestamp="1592731260631">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1592472703150" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1592472703151">
+    <state width="1877" height="363" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1592731260631" />
+    <state width="1877" height="363" key="GridCell.Tab.0.right" timestamp="1592731260631">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1592472703151" />
+    <state width="1877" height="363" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1592731260631" />
     <state x="461" y="162" key="SettingsEditor" timestamp="1592451194296">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="162" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1592451194296" />
+    <state x="992" y="343" key="com.intellij.ide.util.TipDialog" timestamp="1592724001554">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="992" y="343" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1592724001554" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Sirius$API.coverage" NAME="API Coverage Results" MODIFIED="1592472703101" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Sirius$API.coverage" NAME="API Coverage Results" MODIFIED="1592731260624" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
